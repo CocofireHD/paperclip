@@ -51,6 +51,15 @@ import {
 import {
   agentConfigurationDoc as piAgentConfigurationDoc,
 } from "@paperclipai/adapter-pi-local";
+import {
+  execute as kiloExecute,
+  testEnvironment as kiloTestEnvironment,
+  sessionCodec as kiloSessionCodec,
+} from "@paperclipai/adapter-kilo-local/server";
+import {
+  agentConfigurationDoc as kiloAgentConfigurationDoc,
+  models as kiloModels,
+} from "@paperclipai/adapter-kilo-local";
 import { processAdapter } from "./process/index.js";
 import { httpAdapter } from "./http/index.js";
 
@@ -127,12 +136,23 @@ const piLocalAdapter: ServerAdapterModule = {
   agentConfigurationDoc: piAgentConfigurationDoc,
 };
 
+const kiloLocalAdapter: ServerAdapterModule = {
+  type: "kilo_local",
+  execute: kiloExecute,
+  testEnvironment: kiloTestEnvironment,
+  sessionCodec: kiloSessionCodec,
+  models: kiloModels,
+  supportsLocalAgentJwt: true,
+  agentConfigurationDoc: kiloAgentConfigurationDoc,
+};
+
 const adaptersByType = new Map<string, ServerAdapterModule>(
   [
     claudeLocalAdapter,
     codexLocalAdapter,
     openCodeLocalAdapter,
     piLocalAdapter,
+    kiloLocalAdapter,
     cursorLocalAdapter,
     geminiLocalAdapter,
     openclawGatewayAdapter,

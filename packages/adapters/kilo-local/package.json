@@ -1,0 +1,21 @@
+{
+  "name": "@paperclipai/adapter-kilo-local",
+  "version": "0.0.1",
+  "description": "Kilo AI local adapter for Paperclip",
+  "main": "./src/index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@paperclipai/adapter-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "peerDependencies": {
+    "paperclip-server": "workspace:*"
+  }
+}
